@@ -1,0 +1,10 @@
+@SimpleWebAPIChatDemo_HostAddress = https://localhost:7028
+
+
+
+POST {{SimpleWebAPIChatDemo_HostAddress}}/chat
+Content-Type: application/json
+
+"What is 1+1"
+
+###

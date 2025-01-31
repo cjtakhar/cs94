@@ -1,0 +1,340 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "WeatherForecast Testing 8:03:07 PM",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/WeatherForecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "summary": "Provides a randomly generated set of weather forecasts",
+        "description": "Sample request:\r\n\r\nGET /weatherforecast",
+        "operationId": "GetAllWeatherForecasts",
+        "responses": {
+          "200": {
+            "description": "Indicates the request was successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecastResult"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "summary": "Creates a new weather forecast entry and adds it to the list of weather forecasts",
+        "operationId": "CreateWeatherForecast",
+        "requestBody": {
+          "description": "The weather forecast to ad",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeatherForecastCreate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeatherForecastCreate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeatherForecastCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Indicates the weather forecast was added successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WeatherForecastResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/WeatherForecast/{id}": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "summary": "Retrieves the weather forecast by id",
+        "operationId": "GetWeatherForecastById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The Id of the weather forecast",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Indicates the request was successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WeatherForecast"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Indicates the weather forecast was not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "operationId": "PatchWeatherForecastRouteName",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeatherForecastUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeatherForecastUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/WeatherForecastUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "errorNumber": {
+            "type": "integer",
+            "description": "The error number to be used programmatically",
+            "format": "int32"
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "A human readable description of the error for developer to read",
+            "nullable": true
+          },
+          "propertyName": {
+            "type": "string",
+            "description": "The name of the property involved in the air",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Describe the error response"
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      },
+      "WeatherForecast": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "The date of the weather forecast",
+            "format": "date-time"
+          },
+          "temperatureC": {
+            "type": "integer",
+            "description": "The temperature in Celsius",
+            "format": "int32"
+          },
+          "temperatureF": {
+            "type": "integer",
+            "description": "The temperature in Fahrenheit",
+            "format": "int32",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "description": "The summary of the weather forecast",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Describes the weather forecast information"
+      },
+      "WeatherForecastCreate": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "The date of the weather forecast",
+            "format": "date-time"
+          },
+          "temperatureC": {
+            "type": "integer",
+            "description": "The temperature in Celsius",
+            "format": "int32"
+          },
+          "summary": {
+            "maxLength": 60,
+            "minLength": 1,
+            "type": "string",
+            "description": "Summary information about the weather forecast",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Describes the weather forecast information for creation"
+      },
+      "WeatherForecastResult": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "The date of the weather forecast",
+            "format": "date-time"
+          },
+          "temperatureC": {
+            "type": "integer",
+            "description": "The temperature in Celsius",
+            "format": "int32"
+          },
+          "temperatureF": {
+            "type": "integer",
+            "description": "The temperature in Fahrenheit",
+            "format": "int32",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "description": "The summary of the weather forecast",
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WeatherForecastUpdate": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "The date of the weather forecast",
+            "format": "date-time",
+            "nullable": true
+          },
+          "temperatureC": {
+            "type": "integer",
+            "description": "The temperature in Celsius",
+            "format": "int32",
+            "nullable": true
+          },
+          "summary": {
+            "maxLength": 60,
+            "minLength": 1,
+            "type": "string",
+            "description": "Summary information about the weather forecast",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Describes the weather forecast information for update"
+      }
+    }
+  }
+}

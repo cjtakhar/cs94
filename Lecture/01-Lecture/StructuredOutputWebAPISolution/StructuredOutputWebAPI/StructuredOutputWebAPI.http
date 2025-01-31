@@ -1,0 +1,9 @@
+@StructuredOutputWebAPI_HostAddress = https://localhost:7106
+
+
+POST {{StructuredOutputWebAPI_HostAddress}}/chat
+Content-Type: application/json
+
+"You will create .NET 9 based ASP.NET Core Web API project that will use a static in memory data structure to persist data needed for the notes. Your application will utilize OpenAI and a gpt-4o-mini model to create a set of tags related to the detail of our note. You will use Visual Studio to deploy your application to a Microsoft Azure App Service hosted on a Linux Azure App Service Plan that uses the Basic B1 Tier. "
+
+###

@@ -1,0 +1,9 @@
+POST https://localhost:9112/WeatherForecast
+content-type: application/json
+
+{
+  "date": "2023-01-26T02:05:16.861Z",
+  "temperatureC": 10,
+  "summary": "xxx"
+}
+

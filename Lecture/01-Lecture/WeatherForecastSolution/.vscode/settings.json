@@ -1,0 +1,5 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/4ab55d34-0213-4090-a521-48cf35794fff/resourceGroups/rg_01_lecture/providers/Microsoft.Web/sites/01vsc-cscie94-lecture-weatherforecast",
+    "appService.deploySubpath": "WeatherForecast\\vscode-publish"
+
+}
