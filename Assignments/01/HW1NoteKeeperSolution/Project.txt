@@ -1,0 +1,14 @@
+HW1NoteKeeperSolution Assignment 01
+Kuljit Takhar
+kut819@g.harvard.edu
+Generated xml comments with co-pilot
+UI is a React app named notekeeper and loads with npm start and works with local HW1NoteKeeperSolution
+secrets.json: {
+    "OpenAI": {
+        "Endpoint": "https://ai-hub-nk.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview",
+        "ApiKey": "CAJccel9A45OwM742hBjYF8DWhBNDO1zsoqGelposOLzNUGNRxiaJQQJ99BBAC4f1cMXJ3w3AAAAACOGn9rh"
+    }
+}
+Azure AI Foundry Hub: ai-hub-nk
+Project Name: notekeeper
+Azure OpenAI Service target URI: https://notekeeper-app.azurewebsites.net/index.html
