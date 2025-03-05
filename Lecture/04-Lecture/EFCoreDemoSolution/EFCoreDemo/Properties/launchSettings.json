@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "EFCoreDemo": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "APPLICATIONINSIGHTS_CONNECTION_STRING": "InstrumentationKey=6b08f6ff-3048-41e7-af6f-d84352a3923e;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=9b251a16-da26-4a14-8909-cbec5647e534"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7981"
+    }
+  }
+}

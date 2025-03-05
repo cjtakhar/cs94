@@ -9,7 +9,6 @@
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
-    <UserSecretsId>65a29c97-ca0b-454a-b32c-aed11b3bd1b8</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +21,5 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.1" />
     <PackageReference Include="NJsonSchema" Version="11.1.0" />
   </ItemGroup>
-
 
 </Project>

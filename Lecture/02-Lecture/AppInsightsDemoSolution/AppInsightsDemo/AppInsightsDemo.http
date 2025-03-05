@@ -1,0 +1,45 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+@ExceptionHandling_HostAddress = https://localhost:7240
+
+### Get Customers
+GET {{ExceptionHandling_HostAddress}}/Customers
+Accept: application/json
+
+### Head Request for Customers (Count)
+HEAD {{ExceptionHandling_HostAddress}}/Customers
+
+### Post Customers (Create Batch of Customers)
+POST {{ExceptionHandling_HostAddress}}/Customers
+Content-Type: application/json
+
+{
+  "customers": [
+    {
+      "name": "Sample Customer 1",
+      "phone": "123-456-7890",
+      "customerAddress": {
+        "address1": "123 Main St",
+        "address2": "",
+        "city": "Sample City",
+        "state": "SC",
+        "zipCode": "12345"
+      }
+    },
+    {
+      "name": "Sample Customer 2",
+      "phone": "098-765-4321",
+      "customerAddress": {
+        "address1": "456 Second St",
+        "address2": "Apt 101",
+        "city": "Another City",
+        "state": "AC",
+        "zipCode": "54321"
+      }
+    }
+  ]
+}
+
+### Get Specific Customer by ID
+GET {{ExceptionHandling_HostAddress}}/Customers/6
+Accept: application/json
+

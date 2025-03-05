@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "appInsights1": {
+      "restored": true,
+      "restoreTime": "2025-02-04T23:42:31.811312Z"
+    },
+    "secrets.user": {
+      "restored": true,
+      "restoreTime": "2023-01-25T02:44:52.0421971Z"
+    }
+  },
+  "parameters": {
+    "subscriptionId": {
+      "Name": "subscriptionId",
+      "Type": "subscription",
+      "Value": "93265719-3840-4b83-bfa7-d68e32d7c2a1"
+    },
+    "appInsights1.subscriptionId": {
+      "Name": "appInsights1.subscriptionId",
+      "Type": "subscription",
+      "Value": "4ab55d34-0213-4090-a521-48cf35794fff"
+    },
+    "appInsights1.resourceGroupName": {
+      "Name": "appInsights1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "rg_02_lecture"
+    }
+  }
+}

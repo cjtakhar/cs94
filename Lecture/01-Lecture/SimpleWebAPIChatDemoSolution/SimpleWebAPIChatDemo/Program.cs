@@ -126,9 +126,6 @@ internal class Program
         // allowing the API documentation to be accessible
         app.MapOpenApi();
 
-        // Redirect HTTP requests to HTTPS
-        app.UseHttpsRedirection();
-
         // Enable authorization middleware
         app.UseAuthorization();
 

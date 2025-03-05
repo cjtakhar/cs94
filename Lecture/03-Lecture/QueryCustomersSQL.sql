@@ -1,0 +1,5 @@
+SELECT TOP (1000) [Id]
+      ,[Name]
+      ,[EmailAddress]
+      ,[Age]
+  FROM [dbo].[Customer]

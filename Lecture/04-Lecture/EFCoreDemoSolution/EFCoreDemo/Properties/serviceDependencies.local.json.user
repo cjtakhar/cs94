@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "restored": true,
+      "restoreTime": "2022-02-01T19:53:01.7897889Z"
+    },
+    "appInsights1": {
+      "restored": true,
+      "restoreTime": "2022-02-01T19:53:03.8617893Z"
+    }
+  },
+  "parameters": {
+    "appInsights1.subscriptionId": {
+      "Name": "appInsights1.subscriptionId",
+      "Type": "subscription",
+      "Value": "08da0306-afdd-48de-8fec-b48554665efe"
+    },
+    "appInsights1.resourceGroupName": {
+      "Name": "appInsights1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "03-Lecture"
+    }
+  }
+}

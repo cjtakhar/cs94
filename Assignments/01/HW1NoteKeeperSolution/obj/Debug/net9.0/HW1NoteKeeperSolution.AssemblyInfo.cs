@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HW1NoteKeeperSolution")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84c3fdd9ea58740b6cf28ca1a308d4eaa8c38947")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7bd139f6518d7c5337301a9a9ffcb5233e35228f")]
 [assembly: System.Reflection.AssemblyProductAttribute("HW1NoteKeeperSolution")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HW1NoteKeeperSolution")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
