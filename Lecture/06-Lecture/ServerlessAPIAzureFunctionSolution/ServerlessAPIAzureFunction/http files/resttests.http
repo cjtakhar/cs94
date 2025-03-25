@@ -1,0 +1,11 @@
+### Query String example
+GET http://localhost:7071/api/v1/person?name=sally
+
+### No Query String example
+GET http://localhost:7071/api/v1/person
+
+### Path Parameter example
+GET http://localhost:7071/api/v1/person/sally
+
+### Query String example with empty value
+GET http://localhost:7071/api/v1?name=""

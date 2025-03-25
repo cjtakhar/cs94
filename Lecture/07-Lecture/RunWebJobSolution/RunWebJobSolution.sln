@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunWebJob", "RunWebJob\RunWebJob.csproj", "{A2362221-37BF-4FE6-B764-40A55360089F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2362221-37BF-4FE6-B764-40A55360089F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2362221-37BF-4FE6-B764-40A55360089F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2362221-37BF-4FE6-B764-40A55360089F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2362221-37BF-4FE6-B764-40A55360089F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C984B56D-7AFB-431B-950F-9FCD8478BE42}
+	EndGlobalSection
+EndGlobal

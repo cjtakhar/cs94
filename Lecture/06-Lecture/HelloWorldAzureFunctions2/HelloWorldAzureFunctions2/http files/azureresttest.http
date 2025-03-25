@@ -1,0 +1,2 @@
+GET https://helloworldazurefunctions-cscie94.azurewebsites.net/api/HelloWorld?name="Sally"&code=TIWnuzd21IGTO1ly9l1TrprJyp0af8bP0E-E5IkvcpfSAzFuzBUugw==
+    

@@ -1,0 +1,21 @@
+### Get request
+GET http://localhost:7198/api/Function1?name=Jane
+
+### Post request
+POST http://localhost:7198/api/Function1
+Content-Type: application/json
+
+{  
+  "name": "Sue"
+}
+
+### Get request
+GET https://func-helloworldazurefunctions-cscie94.azurewebsites.net/api/Function1?code=16189707-DD36-4F24-BBDF-AA43CE830D79&name=Jane
+
+### Post request
+POST https://func-helloworldazurefunctions-cscie94.azurewebsites.net/api/Function1?code=16189707-DD36-4F24-BBDF-AA43CE830D79
+Content-Type: application/json
+
+{  
+  "name": "Sue"
+}

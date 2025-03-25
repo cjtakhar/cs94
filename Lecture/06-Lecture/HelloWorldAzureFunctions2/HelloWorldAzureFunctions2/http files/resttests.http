@@ -1,0 +1,38 @@
+GET http://localhost:7056/api/HelloWorld?name=Sally
+
+###
+GET http://localhost:7056/api/HelloWorld?name=Exception
+
+###
+POST http://localhost:7056/api/HelloWorld
+Content-Type: application/json
+
+{  
+  "name": "Jane"
+}
+
+###
+
+POST http://localhost:7056/api/HelloWorld
+Content-Type: application/json
+
+{  
+  "name": "Exception"
+}
+
+###
+
+POST http://localhost:7056/api/HelloWorld
+Content-Type: application/json
+
+{
+}
+
+###
+
+PUT http://localhost:7056/api/HelloWorld
+Content-Type: application/json
+
+{  
+  "name": "John"
+}

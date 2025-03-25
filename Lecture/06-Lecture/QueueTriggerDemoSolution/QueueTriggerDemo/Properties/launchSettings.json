@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "QueueTriggerDemo": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
