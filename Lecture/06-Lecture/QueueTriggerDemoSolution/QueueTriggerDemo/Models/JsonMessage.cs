@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QueueTriggerDemo
+namespace QueueTriggerDemo.Models
 {
     public class JsonMessage
     {

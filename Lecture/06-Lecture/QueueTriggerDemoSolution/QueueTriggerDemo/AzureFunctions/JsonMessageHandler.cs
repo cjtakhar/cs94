@@ -3,8 +3,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Options;
+using QueueTriggerDemo.Models;
 
-namespace QueueTriggerDemo
+namespace QueueTriggerDemo.AzureFunctions
 {
     public class JsonMessageHandler
     {
@@ -22,12 +23,8 @@ namespace QueueTriggerDemo
         }
 
         [Function("ProcessJsonQueueMessageFunction")]
-        public void Run([QueueTrigger("myjsonqueue-items", Connection = "AzureWebJobsStorage")] JsonMessage myJsonMessage)
+        public void Run([QueueTrigger("myjsonqueue-items-function", Connection = "StorageConnections")] JsonMessage myJsonMessage)
         {
-            // Demo: Access connection string settings within the azure function,
-            // only displaying first 60 characters so secrets are not exposed
-            string defaultStorageConnection = _configuration.GetConnectionString("DefaultStorageConnection");
-            _logger.LogWarning("DefaultStorageConnection: [{redactedConnectionString} ...]", defaultStorageConnection?.Substring(0, 60));
             _logger.LogWarning("Bad Message String: [{badMessageString} ...]", _mySettings.BadMessageString);
 
             if (myJsonMessage.Message.Contains(_mySettings.BadMessageString))

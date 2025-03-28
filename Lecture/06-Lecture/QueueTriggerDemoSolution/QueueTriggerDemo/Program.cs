@@ -1,27 +1,57 @@
+﻿using Microsoft.Azure.Functions.Worker.Builder;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using QueueTriggerDemo;
+using Azure.Storage.Blobs;
+using Azure.Identity;
 
-var host = new HostBuilder()
-     .ConfigureAppConfiguration((context, config) =>
-     {
-         // Load local settings for local development (if available)
-         config.AddJsonFile("local.settings.json", optional: true, reloadOnChange: true);
+var builder = FunctionsApplication.CreateBuilder(args);
+// Load general app config first
+builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
-         // Load the base configuration file
-         config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+// Optional: load environment-specific settings (if you have them)
+builder.Configuration.AddJsonFile("appsettings.Development.json", optional: true, reloadOnChange: true);
 
-         // Determine the environment and load the corresponding file
-         var env = System.Environment.GetEnvironmentVariable("AZURE_FUNCTIONS_ENVIRONMENT") ?? "Production";
-         config.AddJsonFile($"appsettings.{env}.json", optional: true, reloadOnChange: true);
-     })
-    .ConfigureFunctionsWorkerDefaults()
-    .ConfigureServices((context, services) =>
+// Local Azure Functions settings (values block, or flattened keys)
+builder.Configuration.AddJsonFile("local.settings.json", optional: true, reloadOnChange: true);
+
+// Load user secrets last (to override local/dev settings securely)
+builder.Configuration.AddUserSecrets<Program>(optional: true);
+
+builder.ConfigureFunctionsWebApplication();
+
+// Add MySettings to dependency injection
+builder.Services.Configure<MySettings>(builder.Configuration.GetSection("MySettings"));
+
+var blobServiceUri = builder.Configuration["StorageConnections:blobServiceUri"];
+
+// Check if blobServiceUri is provided in the configuration
+if (string.IsNullOrWhiteSpace(blobServiceUri))
+{
+    var azureWebJobsStorage = builder.Configuration["AzureWebJobsStorage"];
+
+    // If blobServiceUri is not provided, check for AzureWebJobsStorage
+    if (!string.IsNullOrWhiteSpace(azureWebJobsStorage))
     {
-        // Bind the "MySettings" section of your configuration to your MySettings class
-        services.Configure<MySettings>(context.Configuration.GetSection("MySettings"));
-    })
-    .Build();
+        // Use the AzureWebJobsStorage connection string if blobServiceUri is not provided
+        builder.Services.AddSingleton(x => new BlobServiceClient(azureWebJobsStorage));
+    }
+    else
+    {
+        // If neither is provided, throw an exception
+        throw new InvalidOperationException("Either blobServiceUri or AzureWebJobsStorage must be configured.");
+    }
+}
+else
+{
+    // If blobServiceUri is provided, use it to create the BlobServiceClient
+    builder.Services.AddSingleton(x => new BlobServiceClient(new Uri(blobServiceUri), new DefaultAzureCredential()));
+}
 
-host.Run();
+// Application Insights isn't enabled by default. See https://aka.ms/AAt8mw4.
+// builder.Services
+//     .AddApplicationInsightsTelemetryWorkerService()
+//     .ConfigureFunctionsApplicationInsights();
+
+builder.Build().Run();

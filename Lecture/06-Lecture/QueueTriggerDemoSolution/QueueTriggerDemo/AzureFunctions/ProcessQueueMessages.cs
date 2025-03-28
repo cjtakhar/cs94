@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Options;
 
-namespace QueueTriggerDemo
+namespace QueueTriggerDemo.AzureFunctions
 {
     public class ProcessQueueMessages
     {
@@ -22,12 +22,10 @@ namespace QueueTriggerDemo
         }
 
         [Function("ProcessQueueMessageFunction")]
-        public void Run([QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem)
+        public void Run([QueueTrigger("myqueue-items-function", Connection = "StorageConnections")] string myQueueItem)
         {
             // Demo: Access connection string settings within the azure function,
             // only displaying first 60 characters so secrets are not exposed
-            string defaultStorageConnection = _configuration.GetConnectionString("DefaultStorageConnection");
-            _logger.LogWarning("DefaultStorageConnection: [{redactedConnectionString} ...]", defaultStorageConnection?.Substring(0, 60));
             _logger.LogWarning("Bad Message String: [{badMessageString} ...]", _mySettings.BadMessageString);
 
             if (myQueueItem.Contains(_mySettings.BadMessageString))
